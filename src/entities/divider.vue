@@ -1,3 +1,3 @@
 ﻿<template>
-  <div class="w-full border border-zinc-400 my-5"></div>
+  <div class="w-full border-b border-zinc-400 my-10"></div>
 </template>
