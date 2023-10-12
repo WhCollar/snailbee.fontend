@@ -4,6 +4,7 @@ import BotImg from "shared/assets/bot.png";
 import SectionHeader from "entities/section.header.vue";
 import Card from "entities/card.vue";
 import Button from "entities/button.vue";
+import {MasonryGrid, MasonryGridItem} from "entities/masonry.grid";
 
 const specializations = [
   {
@@ -20,6 +21,69 @@ const specializations = [
   },
   {
     label: 'Разработка сайтов и веб-сервисов'
+  }
+];
+
+const ourWorks: MasonryGridItem[] = [
+  {
+    title: '0',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg',
+    path: ''
+  },
+  {
+    title: '1',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg',
+    path: ''
+  },
+  {
+    title: '2',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg',
+    path: ''
+  },
+  {
+    title: '3',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg',
+    path: ''
+  },
+  {
+    title: '4',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg',
+    path: ''
+  },
+  {
+    title: '5',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg',
+    path: ''
+  },
+  {
+    title: '6',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg',
+    path: ''
+  },
+  {
+    title: '7',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg',
+    path: ''
+  },
+  {
+    title: '8',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg',
+    path: ''
+  },
+  {
+    title: '9',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg',
+    path: ''
+  },
+  {
+    title: '10',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg',
+    path: ''
+  },
+  {
+    title: '11',
+    imageUrl: 'https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg',
+    path: ''
   }
 ];
 </script>
@@ -71,10 +135,7 @@ const specializations = [
     <section>
       <Container>
         <SectionHeader title="Наши работы" :revert="true"/>
-        <div class="columns-3 gap-3">
-          <Card class="w-full h-fit"><template #content>1</template></Card>
-          <Card class="w-full h-fit"><template #content>2</template></Card>
-        </div>
+        <MasonryGrid :items="ourWorks"/>
       </Container>
     </section>
     <section>
