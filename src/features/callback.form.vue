@@ -12,13 +12,13 @@ const phone = ref("");
       Получите больше инфомрации
     </div>
     <div>
-      <div class="p-1 border-b border-zinc-400">
-        <input class="w-full" placeholder="Ваше имя" :value="name"/>
+      <div class="border-b border-zinc-400">
+        <input type="text" class="w-full focus:outline-none placeholder:text-zinc-400" placeholder="Ваше имя" :value="name"/>
       </div>
     </div>
     <div>
-      <div class="p-1 border-b border-zinc-400">
-        <input class="w-full" placeholder="Телефон" :value="phone"/>
+      <div class="border-b border-zinc-400">
+        <input type="text" class="w-full focus:outline-none placeholder:text-zinc-400" placeholder="Телефон" :value="phone"/>
       </div>
     </div>
     <div>
