@@ -1,30 +1,35 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import Button from "entities/button.vue";
+import TextInput from "entities/inputs/text.input.vue";
+import PhoneInput from "entities/inputs/phone.input.vue";
+import Card from "entities/card.vue";
 
 const name = ref("");
 const phone = ref("");
+
+const submit = () => {
+
+}
 </script>
 
 <template>
-  <div class="grid grid-rows-4 auto-rows-auto gap-10 p-5 w-fit bg-white rounded-2xl">
-    <div class="font-medium text-2xl">
-      Получите больше инфомрации
-    </div>
-    <div>
-      <div class="border-b border-zinc-400">
-        <input type="text" class="w-full focus:outline-none placeholder:text-zinc-400" placeholder="Ваше имя" :value="name"/>
+  <Card>
+    <template #content>
+      <div class="font-medium text-2xl mb-8">
+        Получите больше инфомрации
       </div>
-    </div>
-    <div>
-      <div class="border-b border-zinc-400">
-        <input type="text" class="w-full focus:outline-none placeholder:text-zinc-400" placeholder="Телефон" :value="phone"/>
+      <div class="my-8">
+        <TextInput placeholder="Ваше имя" v-model:value="name"/>
       </div>
-    </div>
-    <div>
-      <Button>
+      <div class="my-8">
+        <PhoneInput placeholder="Телефон" v-model:value="phone"/>
+      </div>
+    </template>
+    <template #actions>
+      <Button @click="submit">
         Оставить заявку
       </Button>
-    </div>
-  </div>
+    </template>
+  </Card>
 </template>

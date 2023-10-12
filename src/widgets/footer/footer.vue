@@ -13,14 +13,14 @@ import CallbackForm from "features/callback.form.vue";
           <CallbackForm/>
         </div>
         <div class="flex justify-end">
-          <div class="grid grid-rows-4 text-right text-zinc-700">
-            <div class="font-medium text-2xl">
+          <div class="flex-col justify-end text-right text-zinc-700">
+            <div class="font-medium text-2xl my-5">
               Связаться с нами
             </div>
-            <div class="text-xl">
+            <div class="text-xl my-1">
               +7 922 402 39 28
             </div>
-            <div class="text-xl">
+            <div class="text-xl my-1">
               mail@snailbee.ru
             </div>
             <div class="grid grid-cols-2 gap-1">
