@@ -12,6 +12,11 @@ export const routes: Array<RouteRecordRaw> = [
         path: '/briefing',
         name: 'briefing',
         component: () => import('./briefing.vue')
+    },
+    {
+        path: '/works',
+        name: 'works',
+        component: () => import('./works.vue')
     }
 ];
 

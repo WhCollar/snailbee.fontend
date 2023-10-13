@@ -5,7 +5,7 @@ import CallbackForm from "features/callback.form.vue";
 </script>
 
 <template>
-  <footer>
+  <footer id="contacts">
     <Container class="py-10">
       <Divider/>
       <div class="flex justify-between">

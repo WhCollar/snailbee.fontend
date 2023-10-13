@@ -11,15 +11,16 @@ export const menuItems: Item[]  = [
     },
     {
         label: 'Работы',
-        routeName: 'main'
+        routeName: 'works'
     },
     {
         label: 'Контакты',
-        routeName: 'main'
+        routeName: 'main',
+        hash: '#contacts'
     },
     {
         label: 'Бриф',
-        routeName: 'main',
+        routeName: 'briefing',
         asButton: true
     }
 ];
