@@ -1,12 +1,13 @@
 ﻿<script setup lang="ts">
 import Container from "entities/utils/container.vue";
+import Drawer from "entities/drawer.vue";
 </script>
 
 <template>
   <main>
     <section>
       <Container>
-        404
+        <Drawer/>
       </Container>
     </section>
   </main>
