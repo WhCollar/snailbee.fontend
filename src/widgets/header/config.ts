@@ -1,26 +1,25 @@
-﻿import {Item} from "entities/menu";
+﻿import {RouterEnum} from "shared/lib/router";
+import {Item} from "entities/menu";
 
 export const headerHeight = 64;
-
-export const title = 'SnailBee Inc.';
 
 export const menuItems: Item[]  = [
     {
         label: 'Услуги',
-        routeName: 'main'
+        routeName: RouterEnum.Main
     },
     {
-        label: 'Работы',
-        routeName: 'works'
+        label: 'Проекты',
+        routeName: RouterEnum.Projects
     },
     {
         label: 'Контакты',
-        routeName: 'main',
+        routeName: RouterEnum.Main,
         hash: '#contacts'
     },
     {
         label: 'Бриф',
-        routeName: 'briefing',
+        routeName: RouterEnum.Briefing,
         asButton: true
     }
 ];

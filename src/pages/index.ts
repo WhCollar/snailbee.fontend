@@ -1,22 +1,28 @@
 ﻿import {RouteRecordRaw} from "vue-router";
+import {RouterEnum} from "shared/lib/router";
 import Main from "./main.vue";
 import Routing from "./index.vue";
 
 export const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: 'main',
+        name: RouterEnum.Main,
         component: Main
     },
     {
         path: '/briefing',
-        name: 'briefing',
+        name: RouterEnum.Briefing,
         component: () => import('./briefing.vue')
     },
     {
-        path: '/works',
-        name: 'works',
-        component: () => import('./works.vue')
+        path: '/projects',
+        name: RouterEnum.Projects,
+        component: () => import('./projects.vue')
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        name: RouterEnum.NotFound,
+        component: () => import("./not.found.vue")
     }
 ];
 

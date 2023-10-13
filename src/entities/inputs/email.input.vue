@@ -19,7 +19,7 @@ const input = ref<HTMLElement>();
 <template>
   <label v-if="label" :for="input?.id" :class="labelClass">{{ label }}</label>
   <div :class="inputWrapperClass || 'border-b border-zinc-400'">
-    <input v-uid type="text" class="w-full focus:outline-none placeholder:text-zinc-400" :placeholder="placeholder"
+    <input v-uid type="email" class="w-full focus:outline-none placeholder:text-zinc-400" :placeholder="placeholder"
            :value="value" @input="newValue => emit('update:value', newValue.text)"/>
   </div>
 </template>

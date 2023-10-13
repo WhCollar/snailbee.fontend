@@ -17,7 +17,7 @@ const submit = () => {
   <Card>
     <template #content>
       <div class="font-medium text-2xl mb-8">
-        Получите больше инфомрации
+        Оставьте быструю заявку
       </div>
       <div class="my-8">
         <TextInput placeholder="Ваше имя" v-model:value="name"/>

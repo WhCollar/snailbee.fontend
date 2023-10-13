@@ -1,11 +1,22 @@
 <script setup lang="ts">
+import {ref, watch} from "vue";
+import {useRouter} from "vue-router";
 import Container from "entities/utils/container.vue";
 import Divider from "entities/divider.vue";
 import CallbackForm from "features/callback.form.vue";
+import {config} from "entities/static";
+
+const isFooterShow = ref(true);
+
+const router = useRouter();
+
+watch(() => router.currentRoute.value, () => {
+  isFooterShow.value = router.currentRoute.value.name != 'briefing';
+});
 </script>
 
 <template>
-  <footer id="contacts">
+  <footer v-if="isFooterShow" id="contacts">
     <Container class="py-10">
       <Divider/>
       <div class="flex justify-between">
@@ -18,14 +29,13 @@ import CallbackForm from "features/callback.form.vue";
               Связаться с нами
             </div>
             <div class="text-xl my-1">
-              +7 922 402 39 28
+              {{ config.phone }}
             </div>
             <div class="text-xl my-1">
-              mail@snailbee.ru
+              {{ config.email }}
             </div>
-            <div class="grid grid-cols-2 gap-1">
-              <div>tg</div>
-              <div>another</div>
+            <div>
+              {{ config.telegram }}
             </div>
           </div>
         </div>
