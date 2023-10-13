@@ -93,11 +93,4 @@ const submit = () => {
       </Container>
     </section>
   </main>
-  <footer>
-    <div class="bg-gray-100 py-1.5">
-      <div class="w-fit mx-auto">
-        {{ config.companyName }}
-      </div>
-    </div>
-  </footer>
 </template>

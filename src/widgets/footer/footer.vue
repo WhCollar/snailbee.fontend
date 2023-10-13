@@ -16,8 +16,8 @@ watch(() => router.currentRoute.value, () => {
 </script>
 
 <template>
-  <footer v-if="isFooterShow" id="contacts">
-    <Container class="py-10">
+  <footer id="contacts">
+    <Container v-if="isFooterShow" class="py-10">
       <Divider/>
       <div class="flex justify-between">
         <div>
@@ -41,5 +41,12 @@ watch(() => router.currentRoute.value, () => {
         </div>
       </div>
     </Container>
+    <section>
+      <div class="bg-gray-100 py-1.5">
+        <div class="w-fit mx-auto">
+          {{ config.companyName }}
+        </div>
+      </div>
+    </section>
   </footer>
 </template>
