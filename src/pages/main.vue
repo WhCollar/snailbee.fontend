@@ -38,18 +38,18 @@ const router = useRouter();
           <template #content>
             <div class="flex-col">
               <div v-for="(el, index) in config.specializations" :key="index"
-                   class="flex my-3 text-xl font-normal text-zinc-500">
-                <div class="w-12">
+                   class="flex my-3 max-md:text-center text-xl font-normal text-zinc-500">
+                <div class="w-12 max-md:hidden">
                   {{ `0${index + 1}` }}
                 </div>
-                <div class="">
+                <div class="w-full">
                   {{ el.label }}
                 </div>
               </div>
             </div>
           </template>
           <template #actions>
-            <div class="flex justify-end">
+            <div class="flex justify-end max-md:hidden">
               <Button>
                 Оставить заявку
               </Button>

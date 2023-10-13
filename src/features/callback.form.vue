@@ -27,9 +27,11 @@ const submit = () => {
       </div>
     </template>
     <template #actions>
-      <Button @click="submit">
-        Оставить заявку
-      </Button>
+      <div class="max-md:flex max-md:justify-center">
+        <Button @click="submit">
+          Оставить заявку
+        </Button>
+      </div>
     </template>
   </Card>
 </template>

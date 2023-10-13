@@ -19,13 +19,13 @@ watch(() => router.currentRoute.value, () => {
   <footer id="contacts">
     <Container v-if="isFooterShow" class="py-10">
       <Divider/>
-      <div class="flex justify-between">
-        <div>
+      <div class="max-sm:flex-col md:flex md:justify-between">
+        <div class="max-md:flex max-md:justify-center">
           <CallbackForm/>
         </div>
-        <div class="flex justify-end">
-          <div class="flex-col justify-end text-right text-zinc-700">
-            <div class="font-medium text-2xl my-5">
+        <div class="flex justify-center md:justify-end ">
+          <div class="flex-col text-center md:text-right text-zinc-700">
+            <div class="font-medium text-2xl mt-8 mb-5">
               Связаться с нами
             </div>
             <div class="text-xl my-1">
