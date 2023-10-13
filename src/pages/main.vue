@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import {Carousel, Slide} from "vue3-carousel";
 import Container from "entities/utils/container.vue";
 import BotImg from "shared/assets/bot.png";
 import SectionHeader from "entities/section.header.vue";
 import Card from "entities/card.vue";
 import Button from "entities/button.vue";
 import {MasonryGrid, MasonryGridItem} from "entities/masonry.grid";
+
+interface Client {
+  name: string
+  logoUrl: string
+}
 
 const specializations = [
   {
@@ -86,6 +92,33 @@ const ourWorks: MasonryGridItem[] = [
     path: ''
   }
 ];
+
+const clients: Client[] = [
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/google-bard.svg'
+  },
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/google-bard-icon.svg'
+  },
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/google-play-console-icon.svg'
+  },
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/google-play-console.svg'
+  },
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/obsidian-icon.svg'
+  },
+  {
+    name: 'Google',
+    logoUrl: 'https://cdn.svgporn.com/logos/obsidian.svg'
+  }
+];
 </script>
 
 <template>
@@ -136,11 +169,23 @@ const ourWorks: MasonryGridItem[] = [
       <Container>
         <SectionHeader title="Наши работы" :revert="true"/>
         <MasonryGrid :items="ourWorks"/>
+        <div class="flex justify-end">
+          <Button>
+            Все работы
+          </Button>
+        </div>
       </Container>
     </section>
     <section>
       <Container>
         <SectionHeader title="Наши клиенты"/>
+        <Carousel :items-to-show="3" :wrap-around="true">
+          <Slide v-for="(client, index) in clients" :key="index">
+            <div class="carousel__item">
+              <img class="max-h-[54px]" :src="client.logoUrl" :alt="client.name">
+            </div>
+          </Slide>
+        </Carousel>
       </Container>
     </section>
   </main>
