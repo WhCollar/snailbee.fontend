@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Bars3 from "shared/ui/icons/bars3.vue";
 import Container from "entities/utils/container.vue";
 import Drawer from "entities/drawer.vue";
 import {Menu} from "entities/menu";
@@ -18,9 +19,13 @@ const isMobileMenuShow = ref(false);
       <Menu class="max-sm:hidden" :items="menuItems"/>
       <div class="sm:hidden">
         <div @click="isMobileMenuShow = !isMobileMenuShow">
-          Menu
+          <Bars3/>
         </div>
-        <Drawer :show="isMobileMenuShow"/>
+        <Drawer v-model:show="isMobileMenuShow">
+          <template #content>
+            <Menu vertical :items="menuItems"/>
+          </template>
+        </Drawer>
       </div>
     </Container>
   </header>

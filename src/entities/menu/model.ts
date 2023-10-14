@@ -7,4 +7,5 @@
 
 export  interface Props {
     items: Item[]
+    vertical?: boolean
 }

@@ -10,8 +10,30 @@ import {MasonryGrid} from "entities/masonry.grid";
 import {config} from "entities/static";
 import {RouterEnum} from "shared/lib/router";
 
-
 const router = useRouter();
+
+const breakpoints = {
+  640: {
+    itemsToShow: 1,
+    snapAlign: 'left'
+  },
+  768: {
+    itemsToShow: 2,
+    snapAlign: 'left'
+  },
+  1024: {
+    itemsToShow: 3,
+    snapAlign: 'left'
+  },
+  1280: {
+    itemsToShow: 3,
+    snapAlign: 'left'
+  },
+  1536: {
+    itemsToShow: 3,
+    snapAlign: 'left'
+  }
+}
 </script>
 
 <template>
@@ -72,7 +94,7 @@ const router = useRouter();
     <section>
       <Container>
         <SectionHeader title="Наши клиенты"/>
-        <Carousel :items-to-show="3" :wrap-around="true">
+        <Carousel :wrap-around="true" :breakpoints="breakpoints">
           <Slide v-for="(client, index) in config.clients" :key="index">
             <div class="carousel__item">
               <img class="max-h-[54px]" :src="client.logoUrl" :alt="client.name">
