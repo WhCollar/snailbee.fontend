@@ -3,8 +3,8 @@ import {ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import Container from "entities/utils/container.vue";
 import Divider from "entities/divider.vue";
-import CallbackForm from "features/callback.form.vue";
 import {config} from "entities/static";
+import CallbackForm from "features/callback.form.vue";
 
 const isFooterShow = ref(true);
 

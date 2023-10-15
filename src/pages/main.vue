@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {useRouter} from "vue-router";
 import {Carousel, Slide} from "vue3-carousel";
+import {useQuery} from "@tanstack/vue-query";
 import Container from "entities/utils/container.vue";
 import BotImg from "shared/assets/bot.png";
 import SectionHeader from "entities/section.header.vue";
@@ -9,6 +10,7 @@ import Button from "entities/button.vue";
 import {MasonryGrid} from "entities/masonry.grid";
 import {config} from "entities/static";
 import {RouterEnum} from "shared/lib/router";
+import {ClientInstance} from "shared/client.instance";
 
 const router = useRouter();
 
@@ -34,6 +36,11 @@ const breakpoints = {
     snapAlign: 'left'
   }
 }
+
+const {data} = useQuery({
+  queryKey: ['static'],
+  queryFn: async () => await ClientInstance.SiteInit.apiStaticGet()
+});
 </script>
 
 <template>
