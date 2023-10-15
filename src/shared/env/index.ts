@@ -19,7 +19,7 @@ const getEnvVar = (key: string) => {
 /**
  * Базовый путь до API
  */
-export const BASE_API_URL = getEnvVar("BASE_API_URL");
+export const VITE_BASE_API_URL = getEnvVar("VITE_BASE_API_URL");
 
 /**
  * Разрешённые хосты

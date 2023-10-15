@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "typegen": "curl --insecure http://localhost:5271/swagger/v1.0.0/swagger.json > ./src/shared/client.gen/swagger.json && openapi-generator-cli generate -g typescript-axios -i ./src/shared/client.gen/swagger.json -o ./src/shared/client.gen",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
