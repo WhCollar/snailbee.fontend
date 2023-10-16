@@ -3,12 +3,14 @@ import {ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import Container from "entities/utils/container.vue";
 import Divider from "entities/divider.vue";
-import {config} from "entities/static";
 import CallbackForm from "features/callback.form.vue";
+import {useStaticDataQuery} from "entities/static";
 
 const isFooterShow = ref(true);
 
 const router = useRouter();
+
+const {data} = useStaticDataQuery();
 
 watch(() => router.currentRoute.value, () => {
   isFooterShow.value = router.currentRoute.value.name != 'briefing';
@@ -29,13 +31,13 @@ watch(() => router.currentRoute.value, () => {
               Связаться с нами
             </div>
             <div class="text-xl my-1">
-              {{ config.phone }}
+              {{ data?.info.phone }}
             </div>
             <div class="text-xl my-1">
-              {{ config.email }}
+              {{ data?.info.email }}
             </div>
             <div>
-              {{ config.telegram }}
+              {{ data?.info.telegram }}
             </div>
           </div>
         </div>
@@ -44,7 +46,7 @@ watch(() => router.currentRoute.value, () => {
     <section>
       <div class="bg-gray-100 py-1.5">
         <div class="w-fit mx-auto">
-          {{ config.companyName }}
+          {{ data?.info.title }}
         </div>
       </div>
     </section>

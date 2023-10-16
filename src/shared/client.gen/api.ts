@@ -182,6 +182,50 @@ export interface ContentItem {
      */
     'displayText'?: string | null;
 }
+/**
+ * 
+ * @export
+ * @interface Info
+ */
+export interface Info {
+    /**
+     * 
+     * @type {string}
+     * @memberof Info
+     */
+    'phone'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Info
+     */
+    'email'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Info
+     */
+    'telegram'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Info
+     */
+    'title'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface StaticData
+ */
+export interface StaticData {
+    /**
+     * 
+     * @type {Info}
+     * @memberof StaticData
+     */
+    'info'?: Info;
+}
 
 /**
  * ApiApi - axios parameter creator
@@ -293,6 +337,82 @@ export const ApiApiAxiosParamCreator = function (configuration?: Configuration) 
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiQueriesNameGet: async (name: string, parameters?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('apiQueriesNameGet', 'name', name)
+            const localVarPath = `/api/queries/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (parameters !== undefined) {
+                localVarQueryParameter['parameters'] = parameters;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiQueriesNamePost: async (name: string, parameters?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('apiQueriesNamePost', 'name', name)
+            const localVarPath = `/api/queries/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (parameters !== undefined) {
+                localVarQueryParameter['parameters'] = parameters;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -334,6 +454,28 @@ export const ApiApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiContentPost(draft, contentItem, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiQueriesNameGet(name: string, parameters?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiQueriesNameGet(name, parameters, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiQueriesNamePost(name: string, parameters?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiQueriesNamePost(name, parameters, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -371,6 +513,26 @@ export const ApiApiFactory = function (configuration?: Configuration, basePath?:
          */
         apiContentPost(draft?: boolean, contentItem?: ContentItem, options?: any): AxiosPromise<void> {
             return localVarFp.apiContentPost(draft, contentItem, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiQueriesNameGet(name: string, parameters?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.apiQueriesNameGet(name, parameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} name 
+         * @param {string} [parameters] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiQueriesNamePost(name: string, parameters?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.apiQueriesNamePost(name, parameters, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -414,6 +576,30 @@ export class ApiApi extends BaseAPI {
      */
     public apiContentPost(draft?: boolean, contentItem?: ContentItem, options?: AxiosRequestConfig) {
         return ApiApiFp(this.configuration).apiContentPost(draft, contentItem, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} name 
+     * @param {string} [parameters] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiQueriesNameGet(name: string, parameters?: string, options?: AxiosRequestConfig) {
+        return ApiApiFp(this.configuration).apiQueriesNameGet(name, parameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} name 
+     * @param {string} [parameters] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApiApi
+     */
+    public apiQueriesNamePost(name: string, parameters?: string, options?: AxiosRequestConfig) {
+        return ApiApiFp(this.configuration).apiQueriesNamePost(name, parameters, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -673,7 +859,7 @@ export const SiteInitApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiStaticGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiStaticGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StaticData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiStaticGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -692,7 +878,7 @@ export const SiteInitApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiStaticGet(options?: any): AxiosPromise<void> {
+        apiStaticGet(options?: any): AxiosPromise<StaticData> {
             return localVarFp.apiStaticGet(options).then((request) => request(axios, basePath));
         },
     };
