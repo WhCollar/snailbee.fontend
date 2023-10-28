@@ -1,4 +1,6 @@
 ﻿import {Client, Work, Specialization} from "shared/global";
+import {useQuery} from "@tanstack/vue-query";
+import {ClientInstance} from "shared/client.instance";
 
 export const config = {
     companyName: 'SnailBee Inc.',
@@ -111,3 +113,12 @@ export const config = {
         }
     ] as Client[]
 };
+
+export function useStaticDataQuery() {
+    return useQuery({
+        queryKey: ['static'],
+        queryFn: () => ClientInstance.SiteInit.apiStaticGet(),
+        select: response => response.data,
+        suspense: true
+    });
+}
