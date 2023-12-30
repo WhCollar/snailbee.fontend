@@ -4,27 +4,26 @@ import { Props, MasonryGridItem } from './model';
 
 const props = defineProps<Props>();
 
-const items = computed(() => {
-  let chunkLength = props.items.length / 4 - 1;
-  let chunks: MasonryGridItem[][] = [];
-  let chunk: MasonryGridItem[] = [];
+const itemsComputed = computed(() => {
+  if (!props.items) return [];
+  let chunks: MasonryGridItem[][] = [[], [], [], []];
 
-  props.items.forEach((item) => {
-    chunk.push(item);
-
-    if (chunk.length > chunkLength) {
-      chunks.push(chunk);
-      chunk = [];
-    }
-  });
-  chunks.push(chunk);
+  let chunkIndex = 0;
+  for (let item of props.items) {
+    if (chunkIndex > 3) chunkIndex = 0;
+    chunks[chunkIndex].push(item);
+    chunkIndex++;
+  }
 
   return chunks;
 });
 </script>
 
 <template>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 gap-8"
+    @click="() => console.log(itemsComputed)"
+  >
     <template v-if="loading">
       <div class="grid gap-8" v-for="i in 4" :key="i">
         <div class="animate-pulse" v-for="j in 2" :key="j">
@@ -37,8 +36,8 @@ const items = computed(() => {
       </div>
     </template>
     <template v-else>
-      <div class="grid gap-8" v-for="(chunk, index) in items" :key="index">
-        <div v-for="(item, index) in chunk" :key="index">
+      <div class="grid gap-8" v-for="(chunk, i) in itemsComputed" :key="i">
+        <div v-for="(item, j) in chunk" :key="j">
           <img
             class="h-auto max-w-full rounded-3xl"
             :src="item.imageUrl"

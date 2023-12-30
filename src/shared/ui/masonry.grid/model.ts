@@ -5,6 +5,6 @@ export interface MasonryGridItem {
 }
 
 export interface Props {
-  items: MasonryGridItem[];
+  items?: MasonryGridItem[];
   loading?: boolean;
 }
