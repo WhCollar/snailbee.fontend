@@ -1,13 +1,12 @@
 ﻿<script setup lang="ts">
-import Container from "entities/utils/container.vue";
-import Drawer from "entities/drawer.vue";
+import { Drawer, Container } from 'shared/ui';
 </script>
 
 <template>
   <main>
     <section>
       <Container>
-        <Drawer/>
+        <Drawer />
       </Container>
     </section>
   </main>

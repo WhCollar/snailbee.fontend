@@ -1,43 +1,41 @@
 <script setup lang="ts">
-import {ref, watch} from "vue";
-import {useRouter} from "vue-router";
-import Container from "entities/utils/container.vue";
-import Divider from "entities/divider.vue";
-import CallbackForm from "features/callback.form.vue";
-import {useStaticDataQuery} from "entities/static";
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import CallbackForm from 'features/callback.form.vue';
+import { config } from 'entities/static';
+import { Divider, Container } from 'shared/ui';
 
 const isFooterShow = ref(true);
 
 const router = useRouter();
 
-const {data} = useStaticDataQuery();
-
-watch(() => router.currentRoute.value, () => {
-  isFooterShow.value = router.currentRoute.value.name != 'briefing';
-});
+watch(
+  () => router.currentRoute.value,
+  () => {
+    isFooterShow.value = router.currentRoute.value.name != 'briefing';
+  },
+);
 </script>
 
 <template>
   <footer id="contacts">
     <Container v-if="isFooterShow" class="py-10">
-      <Divider/>
+      <Divider />
       <div class="max-sm:flex-col md:flex md:justify-between">
         <div class="max-md:flex max-md:justify-center">
-          <CallbackForm/>
+          <CallbackForm />
         </div>
-        <div class="flex justify-center md:justify-end ">
+        <div class="flex justify-center md:justify-end">
           <div class="flex-col text-center md:text-right text-zinc-700">
-            <div class="font-medium text-2xl mt-8 mb-5">
-              Связаться с нами
+            <div class="font-medium text-2xl mt-8 mb-5">Связаться с нами</div>
+            <div class="text-xl my-1">
+              {{ config.phone }}
             </div>
             <div class="text-xl my-1">
-              {{ data?.info.phone }}
-            </div>
-            <div class="text-xl my-1">
-              {{ data?.info.email }}
+              {{ config.email }}
             </div>
             <div>
-              {{ data?.info.telegram }}
+              {{ config.telegram }}
             </div>
           </div>
         </div>
@@ -46,7 +44,7 @@ watch(() => router.currentRoute.value, () => {
     <section>
       <div class="bg-gray-100 py-1.5">
         <div class="w-fit mx-auto">
-          {{ data?.info.title }}
+          {{ config.companyName }}
         </div>
       </div>
     </section>

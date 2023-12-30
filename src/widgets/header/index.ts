@@ -1,4 +1,4 @@
-﻿import Header from "./header.vue";
-export {Header};
+﻿import Header from './header.vue';
+export { Header };
 
-export {headerHeight} from "./config";
+export { headerHeight } from './config';

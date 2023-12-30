@@ -1,8 +1,8 @@
-import {createApp} from 'vue';
-import {UidPlugin} from "shared/lib/directives/uid"
-import {VueQueryPlugin} from "@tanstack/vue-query";
-import {router} from './providers/router';
+import { VueQueryPlugin } from '@tanstack/vue-query';
+import { createApp } from 'vue';
+import { UidPlugin } from 'shared/lib';
 import App from './App.vue';
+import { router } from './providers';
 
 import './index.scss';
 

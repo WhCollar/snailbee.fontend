@@ -1,47 +1,61 @@
 <script setup lang="ts">
-import {useRouter} from "vue-router";
-import {Carousel, Slide} from "vue3-carousel";
-import Container from "entities/utils/container.vue";
-import BotImg from "shared/assets/bot.png";
-import SectionHeader from "entities/section.header.vue";
-import Card from "entities/card.vue";
-import Button from "entities/button.vue";
-import {MasonryGrid} from "entities/masonry.grid";
-import {config} from "entities/static";
-import {RouterEnum} from "shared/lib/router";
+import { useRouter } from 'vue-router';
+import { Carousel, Slide } from 'vue3-carousel';
+import {
+  useWorksQuery,
+  useSpecializationQuery,
+  useClientsQuery,
+} from 'entities/static';
+import { RouterEnum } from 'shared/model/router';
+import {
+  SectionHeader,
+  Card,
+  Button,
+  Specialization,
+  List,
+  Container,
+  MasonryGrid,
+} from 'shared/ui';
+import { BotImg } from 'shared/ui';
 
 const router = useRouter();
+
+const worksQuery = useWorksQuery();
+const specializationQuery = useSpecializationQuery();
+const clientQuery = useClientsQuery();
 
 const breakpoints = {
   640: {
     itemsToShow: 1,
-    snapAlign: 'left'
+    snapAlign: 'left',
   },
   768: {
     itemsToShow: 2,
-    snapAlign: 'left'
+    snapAlign: 'left',
   },
   1024: {
     itemsToShow: 3,
-    snapAlign: 'left'
+    snapAlign: 'left',
   },
   1280: {
     itemsToShow: 3,
-    snapAlign: 'left'
+    snapAlign: 'left',
   },
   1536: {
     itemsToShow: 3,
-    snapAlign: 'left'
-  }
-}
+    snapAlign: 'left',
+  },
+};
 </script>
 
 <template>
   <main>
-    <section :style="{height: `75vh`}">
+    <section :style="{ height: `75vh` }">
       <Container class="h-full">
-        <div class="h-full bg-contain bg-no-repeat bg-right grid content-center"
-             :style="{'background-image': `url('${BotImg}')`}">
+        <div
+          class="h-full bg-contain bg-no-repeat bg-right grid content-center"
+          :style="{ 'background-image': `url('${BotImg}')` }"
+        >
           <div class="text-zinc-700">
             <div class="text-5xl font-semibold">
               Диджитал дизайн новым взглядом
@@ -55,26 +69,26 @@ const breakpoints = {
     </section>
     <section>
       <Container>
-        <SectionHeader title="Специализации"/>
+        <SectionHeader title="Специализации" />
         <Card class="w-full">
           <template #content>
             <div class="flex-col">
-              <div v-for="(el, index) in config.specializations" :key="index"
-                   class="flex my-3 max-md:text-center text-xl font-normal text-zinc-500">
-                <div class="w-12 max-md:hidden">
-                  {{ `0${index + 1}` }}
-                </div>
-                <div class="w-full">
-                  {{ el.label }}
-                </div>
-              </div>
+              <List
+                :items="specializationQuery.data.value"
+                :loading="specializationQuery.isLoading.value"
+              >
+                <template #item="{ index, item }">
+                  <Specialization
+                    :index="index"
+                    :text="(item as any).displayText"
+                  />
+                </template>
+              </List>
             </div>
           </template>
           <template #actions>
             <div class="flex justify-end max-md:hidden">
-              <Button>
-                Оставить заявку
-              </Button>
+              <Button> Оставить заявку </Button>
             </div>
           </template>
         </Card>
@@ -82,10 +96,13 @@ const breakpoints = {
     </section>
     <section>
       <Container>
-        <SectionHeader title="Наши работы" :revert="true"/>
-        <MasonryGrid :items="config.ourWorks"/>
+        <SectionHeader title="Наши работы" :revert="true" />
+        <MasonryGrid
+          :items="worksQuery.data.value"
+          :loading="worksQuery.isLoading.value"
+        />
         <div class="flex justify-end">
-          <Button @click="router.push({name: RouterEnum.Projects})">
+          <Button @click="router.push({ name: RouterEnum.Projects })">
             Все работы
           </Button>
         </div>
@@ -93,13 +110,31 @@ const breakpoints = {
     </section>
     <section>
       <Container>
-        <SectionHeader title="Наши клиенты"/>
+        <SectionHeader title="Наши клиенты" />
         <Carousel :wrap-around="true" :breakpoints="breakpoints">
-          <Slide v-for="(client, index) in config.clients" :key="index">
-            <div class="carousel__item">
-              <img class="max-h-[54px]" :src="client.logoUrl" :alt="client.name">
-            </div>
-          </Slide>
+          <template v-if="clientQuery.isLoading.value">
+            <Slide v-for="i in 3" :key="i">
+              <div class="carousel__item">
+                <div
+                  class="h-[54px] w-48 animate-pulse bg-gray-300 rounded-3xl"
+                ></div>
+              </div>
+            </Slide>
+          </template>
+          <template v-else>
+            <Slide
+              v-for="(client, index) in clientQuery.data.value"
+              :key="index"
+            >
+              <div class="carousel__item">
+                <img
+                  class="max-h-[54px]"
+                  :src="client.logoUrl"
+                  :alt="client.name"
+                />
+              </div>
+            </Slide>
+          </template>
         </Carousel>
       </Container>
     </section>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {Header} from "widgets/header";
-import {Footer} from "widgets/footer";
+import { Footer } from 'widgets/footer';
+import { Header } from 'widgets/header';
 </script>
 
 <template>
-  <Header/>
-  <RouterView/>
-  <Footer/>
+  <Header />
+  <RouterView />
+  <Footer />
 </template>
 
 <style>
