@@ -9,9 +9,9 @@ const emit = defineEmits<{
 
 <template>
   <div
+    class="font-large text-lg cursor-pointer"
     :class="{
-      'font-medium text-lg cursor-pointer': true,
-      'px-3 py-0.5 rounded-lg border border-zinc-400 text-center': asButton,
+      'w-full py-0.1 rounded-lg border border-zinc-400 text-center': asButton,
       'mr-10': !vertical,
       'mb-5': vertical,
     }"

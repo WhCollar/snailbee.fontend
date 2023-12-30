@@ -2,13 +2,18 @@
 import { axiosInstance } from 'shared/model/client.instance';
 import { VITE_BASE_MEDIA_URL } from 'shared/model/env';
 import { GraphQlQueryResponse } from 'shared/model/types';
-import { MasonryGridItem } from 'shared/ui';
+import { MasonryGridItem, TelegramButtonProps } from 'shared/ui';
 
 export const config = {
   companyName: 'SnailBee Inc.',
   phone: '+7 922 402 39 28',
   email: 'mail@snailbee.ru',
-  telegram: 'Tg',
+  telegramButton: {
+    shareUrl: 'https://t.me/OZ_SF',
+    comment: 'Расскажите на о задаче',
+    size: 'medium',
+    text: 'notext',
+  } as TelegramButtonProps,
 };
 
 interface Media {

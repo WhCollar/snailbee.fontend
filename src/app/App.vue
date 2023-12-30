@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { Footer } from 'widgets/footer';
 import { Header } from 'widgets/header';
+import { Wrapper } from 'shared/ui';
 </script>
 
 <template>
-  <Header />
-  <RouterView />
-  <Footer />
+  <Wrapper>
+    <Header />
+    <RouterView />
+    <Footer />
+  </Wrapper>
 </template>
 
 <style>

@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import CallbackForm from 'features/callback.form.vue';
 import { config } from 'entities/static';
-import { Divider, Container } from 'shared/ui';
+import { Divider, Container, TelegramButton } from 'shared/ui';
 
 const isFooterShow = ref(true);
 
@@ -31,18 +31,23 @@ watch(
             <div class="text-xl my-1">
               {{ config.phone }}
             </div>
-            <div class="text-xl my-1">
+            <div class="text-xl my-2">
               {{ config.email }}
             </div>
-            <div>
-              {{ config.telegram }}
+            <div class="my-1 flex justify-center md:justify-end">
+              <TelegramButton
+                :share-url="config.telegramButton.shareUrl"
+                :size="config.telegramButton.size"
+                :comment="config.telegramButton.comment"
+                :text="config.telegramButton.text"
+              />
             </div>
           </div>
         </div>
       </div>
     </Container>
     <section>
-      <div class="bg-gray-100 py-1.5">
+      <div class="bg-rose-400 py-0.5">
         <div class="w-fit mx-auto">
           {{ config.companyName }}
         </div>

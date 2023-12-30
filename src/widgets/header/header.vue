@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { config } from 'entities/static';
 import { Drawer, Container, Bars3 } from 'shared/ui';
 import { Menu } from 'shared/ui/menu';
 import { menuItems } from './config';
 
+const router = useRouter();
 const isMobileMenuShow = ref(false);
+
+watch(
+  () => router.currentRoute.value,
+  () => (isMobileMenuShow.value = false),
+);
 </script>
 
 <template>

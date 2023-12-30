@@ -16,7 +16,7 @@ const router = useRouter();
       :route-name="item.routeName"
       :hash="item.hash"
       :as-button="item.asButton"
-      :vertical="item.vertical"
+      :vertical="vertical"
       @click="(e) => router.push(e)"
     />
   </div>
