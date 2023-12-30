@@ -33,7 +33,7 @@ export function useWorksQuery() {
         params: {
           query: `{
                   work {
-                    galery {
+                    gallery {
                       urls
                     }
                     name
