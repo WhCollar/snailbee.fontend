@@ -11,9 +11,9 @@ const emit = defineEmits<{
   <div
     class="font-large text-lg cursor-pointer"
     :class="{
-      'w-full py-0.1 rounded-lg border border-zinc-400 text-center': asButton,
+      'py-0.5 px-3 rounded-lg border border-zinc-400 text-center': asButton,
       'mr-10': !vertical,
-      'mb-5': vertical,
+      'w-full mb-5': vertical,
     }"
     @click="() => emit('click', { name: routeName, hash: hash })"
   >

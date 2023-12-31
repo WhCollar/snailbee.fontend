@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "^4.36.2",
+    "@vee-validate/yup": "^4.12.4",
     "axios": "1.6.0",
+    "vee-validate": "^4.12.4",
     "vite": "5.0.5",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",

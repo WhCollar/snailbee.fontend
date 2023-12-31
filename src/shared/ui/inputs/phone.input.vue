@@ -1,8 +1,9 @@
 ﻿<script setup lang="ts">
-import { ref } from 'vue';
+import { Field } from 'vee-validate';
+import ErrorMessage from './error.message.vue';
 
 interface Props {
-  value: string;
+  name: string;
   label?: string;
   labelClass?: string;
   inputWrapperClass?: string;
@@ -10,22 +11,17 @@ interface Props {
 }
 
 defineProps<Props>();
-const emit = defineEmits<{
-  (e: 'update:value', value: string): void;
-}>();
-const input = ref<HTMLElement>();
 </script>
 
 <template>
-  <label v-if="label" :for="input?.id" :class="labelClass">{{ label }}</label>
+  <label v-if="label" :for="name" :class="labelClass">{{ label }}</label>
   <div :class="inputWrapperClass || 'border-b border-zinc-400'">
-    <input
-      v-uid
+    <Field
       type="text"
-      class="w-full focus:outline-none placeholder:text-zinc-400"
+      class="w-full focus:outline-none placeholder:text-zinc-400 bg-transparent"
+      :name="name"
       :placeholder="placeholder"
-      :value="value"
-      @input="(newValue) => emit('update:value', newValue.text)"
     />
   </div>
+  <ErrorMessage :name="name" />
 </template>
