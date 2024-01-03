@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            ls -la
-            docker stop ${{ github.event.repository.name }} 2> /dev/null || true
-            docker build -t ${{ github.event.repository.name }} ./snailbee.frontend
-            docker run --name ${{ github.event.repository.name }} -p 80:80 ${{ github.event.repository.name }}
+            cd ${{ github.event.repository.name }}
+            docker stop $(docker ps -a -q) 2> /dev/null || true
+            docker-compose build
+            docker-compose up -d
