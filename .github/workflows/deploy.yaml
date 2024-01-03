@@ -1,0 +1,36 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+          if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      - name: rsync over ssh
+        run: rsync -avz ${{ github.workspace }} ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/root/
+
+      - name: Restart containers
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ../root/snailbee
+            docker stop ${GITHUB_REPOSITORY} 2> /dev/null || true
+            docker build -t ${GITHUB_REPOSITORY}
+            docker run -name ${GITHUB_REPOSITORY} -p 80:80 ${GITHUB_REPOSITORY}
