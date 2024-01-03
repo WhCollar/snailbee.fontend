@@ -11,7 +11,7 @@ services:
 
   frontend:
     build:
-      context: ./snailbee.fontend
+      context: .
       dockerfile: Dockerfile
     container_name: frontend
     depends_on:
@@ -24,5 +24,3 @@ services:
       - 80:80
       - 443:443
     restart: always
-    networks:
-      - internal_net
