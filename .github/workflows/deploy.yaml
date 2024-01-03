@@ -30,6 +30,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker stop ${{ github.repository }} 2> /dev/null || true
-            docker build -t ${{ github.repository }} ../root/snailbee.frontend
-            docker run --name ${{ github.repository }} -p 80:80 ${{ github.repository }}
+            docker stop ${{ github.event.repository.name }} 2> /dev/null || true
+            docker build -t ${{ github.event.repository.name }} ../root/snailbee.frontend
+            docker run --name ${{ github.event.repository.name }} -p 80:80 ${{ github.event.repository.name }}
