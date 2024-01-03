@@ -31,5 +31,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             docker stop ${{ github.repository }} 2> /dev/null || true
-            docker build -t ${{ github.repository }} ./root/snailbee.frontend/
+            docker build -t ${{ github.repository }} ../root/snailbee.frontend
             docker run --name ${{ github.repository }} -p 80:80 ${{ github.repository }}
