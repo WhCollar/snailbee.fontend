@@ -14,8 +14,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: frontend
-    depends_on:
-      - cms
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./data/certbot/conf:/etc/letsencrypt
