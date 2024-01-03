@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ../root/snailbee
+            cd ../root/snailbee.frontend
             docker stop ${GITHUB_REPOSITORY} 2> /dev/null || true
             docker build -t ${GITHUB_REPOSITORY}
             docker run -name ${GITHUB_REPOSITORY} -p 80:80 ${GITHUB_REPOSITORY}

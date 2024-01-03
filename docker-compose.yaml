@@ -1,0 +1,28 @@
+services:
+  certbot:
+    image: certbot/certbot
+    depends_on:
+      - frontend
+    container_name: certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email monserka@gmail.com --agree-tos --no-eff-email -d snailbee.com
+
+  frontend:
+    build:
+      context: ./snailbee.fontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      - cms
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    networks:
+      - internal_net
