@@ -32,5 +32,5 @@ jobs:
           script: |
             ls -la
             docker stop ${{ github.event.repository.name }} 2> /dev/null || true
-            docker build -t ${{ github.event.repository.name }} /root/snailbee.frontend
+            docker build -t ${{ github.event.repository.name }} ./snailbee.frontend
             docker run --name ${{ github.event.repository.name }} -p 80:80 ${{ github.event.repository.name }}
