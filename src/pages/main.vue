@@ -111,8 +111,8 @@ const breakpoints = {
     <section>
       <Container>
         <SectionHeader title="Наши клиенты" />
-        <Carousel :wrap-around="true" :breakpoints="breakpoints">
-          <template v-if="clientQuery.isLoading.value">
+        <template v-if="clientQuery.isLoading.value">
+          <Carousel :wrap-around="true" :breakpoints="breakpoints">
             <Slide v-for="i in 3" :key="i">
               <div class="carousel__item">
                 <div
@@ -120,8 +120,10 @@ const breakpoints = {
                 ></div>
               </div>
             </Slide>
-          </template>
-          <template v-else>
+          </Carousel>
+        </template>
+        <template v-else>
+          <Carousel :wrap-around="true" :breakpoints="breakpoints">
             <Slide
               v-for="(client, index) in clientQuery.data.value"
               :key="index"
@@ -134,8 +136,8 @@ const breakpoints = {
                 />
               </div>
             </Slide>
-          </template>
-        </Carousel>
+          </Carousel>
+        </template>
       </Container>
     </section>
   </main>
