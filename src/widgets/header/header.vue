@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { config } from 'entities/static';
+import { RouterEnum } from 'shared/model/router';
 import { Drawer, Container, Bars3 } from 'shared/ui';
 import { Menu } from 'shared/ui/menu';
 import { menuItems } from './config';
@@ -18,7 +19,10 @@ watch(
 <template>
   <header :class="`h-[64px] text-zinc-700`">
     <Container class="h-full flex justify-between items-center">
-      <div class="font-semibold text-2xl">
+      <div
+        class="font-semibold text-2xl cursor-pointer"
+        @click="router.push({ name: RouterEnum.Main })"
+      >
         {{ config.companyName }}
       </div>
       <Menu class="max-sm:hidden" :items="menuItems" />

@@ -3,6 +3,7 @@ import { toTypedSchema } from '@vee-validate/yup';
 import { useForm } from 'vee-validate';
 import { object, string } from 'yup';
 import { Button, EmailInput, PhoneInput, TextInput } from 'shared/ui';
+import { sendForm } from './api';
 
 const wrapperClass = 'mb-10';
 const wrapperClassWithoutLabel = 'my-6';
@@ -14,8 +15,8 @@ const { handleSubmit, resetForm } = useForm({
     object({
       about: string().required('Будем рады узнать название или сферу работы'),
       case: string().required('Узнав задачу, мы начнём мысленно её решать'),
-      budget: string(),
-      commentary: string(),
+      budget: string().default(''),
+      commentary: string().default(''),
       name: string().required('Нам нужно знать, как к вам обращаться'),
       phone: string()
         .phone('Неверно введён номер телефона')
@@ -28,8 +29,7 @@ const { handleSubmit, resetForm } = useForm({
 });
 
 const onSubmit = handleSubmit((values) => {
-  console.log(values);
-  resetForm();
+  sendForm(values).then(() => resetForm());
 });
 </script>
 

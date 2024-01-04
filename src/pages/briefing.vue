@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PageBookmark from 'widgets/page.bookmark.vue';
-import BriefingForm from 'features/briefing.form.vue';
+import { BriefingForm } from 'features/briefing.form';
 import { Container } from 'shared/ui';
 </script>
 

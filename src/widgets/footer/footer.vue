@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import CallbackForm from 'features/callback.form.vue';
+import { CallbackForm } from 'features/callback.form';
 import { config } from 'entities/static';
 import { Divider, Container, TelegramButton } from 'shared/ui';
 

@@ -98,6 +98,7 @@ const breakpoints = {
       <Container>
         <SectionHeader title="Наши работы" :revert="true" />
         <MasonryGrid
+          class="mb-4"
           :items="worksQuery.data.value"
           :loading="worksQuery.isLoading.value"
         />

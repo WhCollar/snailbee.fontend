@@ -3,6 +3,7 @@ import { toTypedSchema } from '@vee-validate/yup';
 import { useForm } from 'vee-validate';
 import { object, string } from 'yup';
 import { Button, Card, PhoneInput, TextInput } from 'shared/ui';
+import { sendForm } from './api';
 
 const { handleSubmit, resetForm } = useForm({
   validationSchema: toTypedSchema(
@@ -16,8 +17,7 @@ const { handleSubmit, resetForm } = useForm({
 });
 
 const onSubmit = handleSubmit((values) => {
-  console.log(values);
-  resetForm();
+  sendForm(values).then(() => resetForm());
 });
 </script>
 
