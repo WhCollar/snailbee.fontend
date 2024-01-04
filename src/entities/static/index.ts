@@ -25,6 +25,7 @@ interface Work {
   name: string;
   image: Media;
   gallery: Media;
+  link: string;
 }
 
 interface WorksResponse {
@@ -45,6 +46,7 @@ export function useWorksQuery() {
                     image {
                       urls
                     }
+                    link
                   }
                 }`,
         },
@@ -53,7 +55,7 @@ export function useWorksQuery() {
       response.data.data.work.map<MasonryGridItem>((work) => ({
         title: work.name,
         imageUrl: VITE_BASE_MEDIA_URL + work.image.urls[0],
-        path: work.contentItemId,
+        path: work.link,
       })),
     suspense: true,
   });
@@ -91,11 +93,13 @@ export function useSpecializationQuery() {
 interface ClientDTO {
   name: string;
   logoUrl: string;
+  link: string;
 }
 
 interface Client {
   name: string;
   logo: Media;
+  link: string;
 }
 
 interface ClientsQueryResponse {
@@ -114,6 +118,7 @@ export function useClientsQuery() {
                     logo {
                       urls
                     }
+                    link
                   }
                 }`,
         },
@@ -122,6 +127,7 @@ export function useClientsQuery() {
       response.data.data.client.map<ClientDTO>((client) => ({
         name: client.name,
         logoUrl: VITE_BASE_MEDIA_URL + client.logo.urls[0],
+        link: client.link,
       })),
     suspense: true,
   });

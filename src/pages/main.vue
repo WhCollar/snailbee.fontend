@@ -88,7 +88,13 @@ const breakpoints = {
           </template>
           <template #actions>
             <div class="flex justify-end max-md:hidden">
-              <Button> Оставить заявку </Button>
+              <Button
+                @click="
+                  router.push({ name: RouterEnum.Main, hash: '#contacts' })
+                "
+              >
+                Оставить заявку
+              </Button>
             </div>
           </template>
         </Card>
@@ -130,11 +136,13 @@ const breakpoints = {
               :key="index"
             >
               <div class="carousel__item">
-                <img
-                  class="max-h-[54px]"
-                  :src="client.logoUrl"
-                  :alt="client.name"
-                />
+                <a :href="client.link">
+                  <img
+                    class="max-h-[54px]"
+                    :src="client.logoUrl"
+                    :alt="client.name"
+                  />
+                </a>
               </div>
             </Slide>
           </Carousel>

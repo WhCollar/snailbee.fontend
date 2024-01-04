@@ -38,14 +38,16 @@ const itemsComputed = computed(() => {
     <template v-else>
       <div class="grid gap-8" v-for="(chunk, i) in itemsComputed" :key="i">
         <div v-for="(item, j) in chunk" :key="j">
-          <img
-            class="h-auto max-w-full rounded-3xl"
-            :src="item.imageUrl"
-            :alt="item.title"
-          />
-          <div class="pl-2 text-xl text-zinc-700">
-            {{ item.title }}
-          </div>
+          <a :href="item.path">
+            <img
+              class="h-auto max-w-full rounded-3xl mb-3"
+              :src="item.imageUrl"
+              :alt="item.title"
+            />
+            <div class="pl-2 text-sm text-zinc-700">
+              {{ item.title }}
+            </div>
+          </a>
         </div>
       </div>
     </template>
